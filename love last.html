@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <title>For You ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #1f0036, #4b0055, #ff4f8b);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Segoe UI", sans-serif;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .intro-heart {
+      position: absolute;
+      font-size: 180px;
+      animation: introPop 2s ease forwards;
+      opacity: 0;
+      z-index: 2;
+      text-shadow: 0 0 40px rgba(255,100,180,0.9);
+    }
+
+    @keyframes introPop {
+      0% { transform: scale(0); opacity: 0; }
+      60% { transform: scale(1.3); opacity: 1; }
+      100% { transform: scale(1); opacity: 0; }
+    }
+
+    .box {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(14px);
+      padding: 50px;
+      border-radius: 32px;
+      max-width: 700px;
+      box-shadow: 0 0 40px rgba(255, 80, 160, 0.5);
+      animation: fadeIn 2.5s ease;
+      z-index: 3;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .box:hover {
+      transform: scale(1.02);
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      text-shadow: 0 0 16px rgba(255,150,220,0.9);
+    }
+
+    .hint {
+      font-size: 1em;
+      opacity: 0.8;
+      margin-bottom: 15px;
+    }
+
+    .message {
+      display: none;
+      animation: reveal 1.2s ease;
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.7;
+      text-shadow: 0 0 6px rgba(0,0,0,0.3);
+    }
+
+    .date {
+      margin-top: 25px;
+      font-size: 1em;
+      opacity: 0.9;
+    }
+
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 42px;
+      animation: float 10s linear infinite;
+      opacity: 0.9;
+      filter: drop-shadow(0 0 12px rgba(255,150,220,0.8));
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(110vh) scale(1);
+        opacity: 0;
+      }
+      20% { opacity: 1; }
+      100% {
+        transform: translateY(-15vh) scale(1.8);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.85); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="intro-heart">❤️</div>
+
+  <div class="box" onclick="revealMessage()">
+    <h1>💌</h1>
+    <div class="hint">Захиан дээр дар</div>
+
+    <div class="message" id="message">
+      <p><strong>Би чамд хайртай, надтай үерхээч.</strong></p>
+
+      <p>
+        Би чиний хүссэн бүхнийг өгч чадахгүй ч,<br>
+        өөрт байгаа бүх сэтгэлээ өгч чадна.<br><br>
+        Чиний зүрхэнд түр ч болтугай дулаан нэмэж чадвал,<br>
+        тэр нь миний хамгийн том аз жаргал.
+      </p>
+
+      <p>
+        Бусдаас арай өөрөөр хэлэхийг л хичээлээ<br>
+        таалагднаа гэж найдаж байна.<br>
+        Миний энэ бичвэрийг нандигнаж хайрлаж яваарай
+      </p>
+
+      <div class="date">2026 · 01 · 18</div>
+    </div>
+  </div>
+
+  <script>
+    function revealMessage() {
+      document.getElementById("message").style.display = "block";
+    }
+
+    const hearts = ["❤️", "💖", "💕", "💗", "💘", "✨"];
+
+    for (let i = 0; i < 45; i++) {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (7 + Math.random() * 6) + "s";
+      heart.style.fontSize = (36 + Math.random() * 32) + "px";
+      document.body.appendChild(heart);
+    }
+  </script>
+
+</body>
+</html>
